@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "object",
+      "properties": {
+        "awsHost": {
+          "type": "string"
+        },
+        "clusterName": {
+          "type": "string"
+        },
+        "configuredWithCE": {
+          "type": "string"
+        },
+        "demographyUrl": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "handshakeStatus": {
+          "type": "string"
+        },
+        "localTime": {
+          "type": "string"
+        },
+        "loginUrl": {
+          "type": "string"
+        },
+        "mqttStatus": {
+          "type": "string"
+        },
+        "org_id": {
+          "type": "string"
+        },
+        "org_name": {
+          "type": "string"
+        },
+        "storeCareUrl": {
+          "type": "string"
+        },
+        "store_id": {
+          "type": "string"
+        },
+        "tillName": {
+          "type": "string"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "updateUrl": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "utcTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "awsHost",
+        "clusterName",
+        "configuredWithCE",
+        "demographyUrl",
+        "first_name",
+        "handshakeStatus",
+        "localTime",
+        "loginUrl",
+        "mqttStatus",
+        "org_id",
+        "org_name",
+        "storeCareUrl",
+        "store_id",
+        "tillName",
+        "timeZone",
+        "updateUrl",
+        "user_id",
+        "utcTime"
+      ]
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "success"
+      ]
+    }
+  },
+  "required": [
+    "response",
+    "status"
+  ]
+}

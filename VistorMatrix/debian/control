@@ -1,0 +1,9 @@
+Package: [[artifactId]]
+Version: [[version]]
+Section: misc
+Priority: optional
+Architecture: all
+Pre-Depends: service-discovery
+Maintainer: AVK <arun.vijay@capillarytech.com>
+Description: instoreaiqa
+Distribution: development

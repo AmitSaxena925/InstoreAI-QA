@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="DataImportUITestSuite">
+	<listeners>
+		<listener
+			class-name="com.capillary.VisitorMatrix.qa.framework.listeners.EmailListener" />
+	</listeners>
+	<test name="DataImportUITest" preserve-order="true"
+		group-by-instances="true">
+		<classes>
+			<class
+				name="com.capillary.VisitorMatrix.ui.test.testScripts.DataImportUITest" />
+		</classes>
+	</test>
+</suite>

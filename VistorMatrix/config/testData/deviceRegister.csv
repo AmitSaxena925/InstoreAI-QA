@@ -1,0 +1,9 @@
+device_id,device_type,wifi_mac_id,lan_mac_id,till_id,store_id,org_id,device_name,processor,lens,with_staff_switch,case_version,case_color,is_active,enable_notifications,enable_demographics_capture,date_installed,date_removed,auto_update_time,notes
+201912261646051,FFC,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646052,CE,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646053,FFC,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646054,CE,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646055,FFC,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646056,CE,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646057,FFC,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported
+201912261646058,CE,b8:27:eb:d6:b7:6e,b8:27:eb:83:e2:3b,0,0,0,qa_bay,Raspberry_Pi 3 B Plus,V2,0,cvp_dev,Black,1,1,0,03-20-2019 00:00:00,NA,03-20-2019 00:00:00,imported

@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "object",
+      "properties": {
+        "awsCertificates": {
+          "type": "boolean"
+        },
+        "capVerified": {
+          "type": "boolean"
+        },
+        "cpuUsage": {
+          "type": "number"
+        },
+        "deviceId": {
+          "type": "integer"
+        },
+        "diskSpaceLeft": {
+          "type": "integer"
+        },
+        "ffcStatus": {
+          "type": "string"
+        },
+        "hub": {
+          "type": "object",
+          "properties": {
+            "demographyUrl": {
+              "type": "boolean"
+            },
+            "loginUrl": {
+              "type": "boolean"
+            },
+            "storeCareUrl": {
+              "type": "boolean"
+            },
+            "updateUrl": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "demographyUrl",
+            "loginUrl",
+            "storeCareUrl",
+            "updateUrl"
+          ]
+        },
+        "internet": {
+          "type": "string"
+        },
+        "memoryUsage": {
+          "type": "object",
+          "properties": {
+            "Available": {
+              "type": "number"
+            },
+            "Free": {
+              "type": "number"
+            },
+            "Used": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "Available",
+            "Free",
+            "Used"
+          ]
+        },
+        "rtcTime": {
+          "type": "string"
+        },
+        "temperature": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "awsCertificates",
+        "capVerified",
+        "cpuUsage",
+        "deviceId",
+        "diskSpaceLeft",
+        "ffcStatus",
+        "hub",
+        "internet",
+        "memoryUsage",
+        "rtcTime",
+        "temperature"
+      ]
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "success"
+      ]
+    }
+  },
+  "required": [
+    "response",
+    "status"
+  ]
+}

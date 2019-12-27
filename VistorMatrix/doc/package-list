@@ -1,0 +1,17 @@
+com.capillary.VisitorMatrix.api.test.deviceRegistration
+com.capillary.VisitorMatrix.api.test.heatMap
+com.capillary.VisitorMatrix.qa.framework.DTO
+com.capillary.VisitorMatrix.qa.framework.Requests
+com.capillary.VisitorMatrix.qa.framework.annotation
+com.capillary.VisitorMatrix.qa.framework.base
+com.capillary.VisitorMatrix.qa.framework.core
+com.capillary.VisitorMatrix.qa.framework.core.config
+com.capillary.VisitorMatrix.qa.framework.element
+com.capillary.VisitorMatrix.qa.framework.element.internal
+com.capillary.VisitorMatrix.qa.framework.listeners
+com.capillary.VisitorMatrix.qa.framework.util
+com.capillary.VisitorMatrix.qa.framework.util.serviceDiscovery
+com.capillary.VisitorMatrix.qa.testcase
+com.capillary.VisitorMatrix.ui.test
+com.capillary.VisitorMatrix.ui.test.dataimport.applicationPages.base
+com.capillary.VisitorMatrix.ui.test.dataimport.applicationPages.common

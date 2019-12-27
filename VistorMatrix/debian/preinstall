@@ -1,0 +1,5 @@
+#!/bin/bash -e
+logdir=/var/log/capillary/instoreaiqa
+if [ ! -d "$logdir" ]; then
+  mkdir -p $logdir && chown -R ubuntu:ubuntu $logdir
+fi

@@ -1,0 +1,4 @@
+org_id,Zone_id,Store_id,Store_name,till_id,till_name,device_id,delete_days
+794,50013046,50013055,store.bang.test.1,50013158,bngteststore1,201808201453,0
+794,50013046,50013055,store.bang.test.1,50013158,bngteststore1,201808201724,0
+794,50013046,50013055,store.bang.test.1,50013158,bngteststore1,201808211105,0

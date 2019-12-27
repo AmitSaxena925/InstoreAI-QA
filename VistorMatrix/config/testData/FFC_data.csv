@@ -1,0 +1,16 @@
+org_id,Zone_id,Store_id,Store_name,till_id,till_name,device_id,delete_days
+794,50013046,50013055,store.bang.test.1,50013158,bngteststore1,1,0
+794,50013046,50013056,store.bang.test.2,50013159,bngteststore2,2,2
+794,50013046,50013057,store.bang.test.3,50013160,bngteststore3,3,0
+794,50013046,50013058,store.bang.test.4,50013161,bngteststore4,4,0
+794,50013047,50013059,store.hyd.test.1,50013162,hydteststore1,5,2
+794,50013047,50013060,store.hyd.test.2,50013163,hydteststore2,6,1
+794,50013047,50013061,store.hyd.test.3,50013164,hydteststore3,7,1
+794,50013045,50013063,store.delhi.test.1,50013166,delhiteststore1,9,1
+794,50013045,50013064,store.delhi.test.2,50013167,delhiteststore2,10,1
+794,50013045,50013065,store.delhi.test.3,50013168,delhiteststore3,11,1
+794,50013044,50013066,store.punjab.test.1,50013169,pnbteststore1,12,1
+794,50013044,50013067,store.punjab.test.2,50013170,pnbteststore2,13,1
+794,50013044,50013068,store.punjab.test.3,50013171,pnbteststore3,14,1
+794,50013078,50013079,store.mh.test.1,50013180,mhteststore1,15,0
+794,50013078,50013080,store.mh.test.2,50013181,mhteststore2,16,1

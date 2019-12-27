@@ -1,0 +1,3 @@
+chmod +x /etc/capillary/instoreaiqa/run.sh
+dirsprepare instoreaiqa.conf
+chmod 775 /var/log/capillary/instoreaiqa
