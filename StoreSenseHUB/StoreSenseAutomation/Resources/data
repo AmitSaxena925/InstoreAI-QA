@@ -1,0 +1,823 @@
+import hashlib
+import requests
+import datetime
+import time
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+from Resources.datafile import *
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+import json
+
+
+
+
+
+
+def mongodb_connects(orgId,val):
+    mongoClient = MongoClient("mongodb://capillary:deal20hunt@localhost:27000/instoreai_storesense")
+    db = mongoClient.instoreai_storesense
+    #val = "5d10af0d1feea626d5c89535"
+    a = {"visitor": ObjectId(val)}
+    orgs =db['orgs'].find_one({'orgId':orgId})
+    inference_type=orgs['inferenceTypeList']
+
+    if inference_type ==['DP']:
+        demographies = db["demographies"].find_one(a)
+        print(demographies)
+        print("Status of inference--->",demographies["status"])
+    elif  inference_type ==[ "FP", "DP", "DT", "ISS" ]:
+        fashions = db["fashions"].find_one(a)
+        print(fashions)
+        print("Status of inference--->", fashions["status"])
+        demographies = db["demographies"].find_one(a)
+        print(demographies)
+        print("Status of inference--->", demographies["status"])
+        dwelltimes = db['dwelltimes'].find_one(a)
+        print(dwelltimes)
+        print("Status of inference--->", dwelltimes["status"])
+
+    elif inference_type ==["FP"]:
+        fashions = db["fashions"].find_one(a)
+        print(fashions)
+        print("Status of inference--->", fashions["status"])
+
+    elif inference_type ==["DW"]:
+        dwelltimes = db['dwelltimes'].find_one(a)
+        print(dwelltimes)
+        print("Status of inference--->", dwelltimes["status"])
+    elif inference_type ==["CR"]:
+        customerrecognitions = db["customerrecognitions"].find_one(a)
+        print(customerrecognitions)
+        print("Status of inference--->", customerrecognitions["status"])
+    elif inference_type == ["ISS"]:
+        pass
+        #print("Status of inference--->", demographies["status"])
+    elif inference_type ==[ "FP", "DP", "DT", "CR", "ISS" ]:
+        fashions = db["fashions"].find_one(a)
+        print(fashions)
+        #print("Status of inference--->", fashions["status"])
+        demographies = db["demographies"].find_one(a)
+        print(demographies)
+        print("Status of inference--->", demographies["status"])
+        dwelltimes = db['dwelltimes'].find_one(a)
+        print(dwelltimes)
+        #print("Status of inference--->", dwelltimes["status"])
+        customerrecognitions = db["customerrecognitions"].find_one(a)
+        print(customerrecognitions)
+        #print("Status of inference--->", customerrecognitions["status"])
+
+    else:
+        print("something went wrong")
+
+mongodb_connects(794,"5d10af0d1feea626d5c89535")
+
+def mongodb_connect():
+
+    mongoClient = MongoClient("mongodb://capillary:deal20hunt@localhost:27000/instoreai_storesense")
+    db = mongoClient.instoreai_storesense
+    bsCollection = db["bodysegmentations"]
+    visitorCollection = db["visitors"]
+    imagesCollection = db["images"]
+    vsDocs = visitorCollection.find_one({})
+
+#print("Stroe ID:", vsDocs, "inferenceTypeList---->", vsDocs['inferenceTypeList'])
+'''
+        print('imageList---->',vsDocs['imageList'],'trackId----->',vsDocs['trackId'])
+        print('tillId---->',vsDocs['tillId'],'eventType----->',vsDocs["eventType"])
+        print('storeId------>',vsDocs['storeId'],'startTime----->',vsDocs['startTime'])
+        print('_id---->',vsDocs['_id'])
+        bsDocs = bsCollection.find_one({})'''
+             #print(type(bsDocs))
+
+#mongodb_connect()
+
+def calculate_checksum(filename):
+    with open(filename, 'rb') as open_file:
+        content = open_file.read()
+        hasher = hashlib.md5()
+        hasher.update(content)
+        return (hasher.hexdigest())
+
+def time_module():
+    local_time = time.mktime(datetime.datetime.now().timetuple())
+    return int(local_time)
+with_out_mili =time_module()
+
+def time_module_mili():
+    millis = int(round(time.time() * 1000))
+    return int(millis)
+
+va = time_module_mili()
+
+temp=[]
+
+# Image Scenario
+def image_upload_data():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': var, 'frameTime': var2, 'score': '80'}
+        req = requests.post(urlss,data=datas,files=files,auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body=re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code =200
+        expected_message ="success"
+        assert status_code == expected_code,"Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(status_code,expected_code)
+        assert status_message == expected_message,"Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(status_code,expected_message)
+        assert body !='',"Actaul_body_is_'{}'".format(body)
+        print("Status_Code::",status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    return temp
+
+def image_upload_data_checksum_null():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': '', 'frameTime': with_out_mili, 'score': '80'}
+        req = requests.post(urlss,data=datas,files=files,auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+'''
+def image_upload_data_checksum_invalid():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': '', 'frameTime': with_out_mili, 'score': '80'}
+        req = requests.post(urlss, data=datas, files=files, auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+
+'''
+#print(image_upload_data_checksum_invalid())
+
+def image_upload_data_frameTime_invalid():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': var, 'frameTime': '1234567890', 'score': '80'}
+        req = requests.post(urlss, data=datas, files=files, auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+
+
+#print(image_upload_data_frameTime_invalid())
+
+def image_upload_data_frameTime_null():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': var, 'frameTime': '', 'score': '80'}
+        req = requests.post(urlss, data=datas, files=files, auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+
+
+#print(image_upload_data_frameTime_null())
+
+def image_upload_data_score_invalid():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': var, 'frameTime': with_out_mili, 'score': ''}
+        req = requests.post(urlss, data=datas, files=files, auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+
+
+#print(image_upload_data_score_invalid())
+
+
+def image_upload_data_score_empty():
+
+    for i in path_of_file:
+        var = calculate_checksum(i)
+        #var2 = time_module_mili()
+        urlss = str(url) + str(end_iu)
+        files = {'image': open(i, 'rb')}
+        datas = {'checksum': var, 'frameTime': with_out_mili, 'score': ''}
+        req = requests.post(urlss, data=datas, files=files, auth=auth_id)
+        temp.append(req.json()['body']['imageId'])
+        response = json.dumps(req.json(), indent=4)
+        print(response)
+        re = req.json()
+        body = re['body']['imageId']
+        status_code = re['status']['code']
+        status_message = re['status']['message']
+        print("ImageID:", body)
+        expected_code = 200
+        expected_message = "success"
+        assert status_code == expected_code, "Actaul_Status_code_is_'{}'but Expected Status_Code_is'{}'".format(
+            status_code, expected_code)
+        assert status_message == expected_message, "Actaul_Status_message_is_'{}'but Expected Status_message_is'{}'".format(
+            status_code, expected_message)
+        assert body != '', "Actaul_body_is_'{}'".format(body)
+        print("Status_Code::", status_code)
+        print("Status_Message::", status_message)
+        #print("One Iteration Is COMPLETED")
+        print(mongodb_connect())
+    #return temp
+
+
+#print(image_upload_data_score_empty())
+# Visitor Scenarios
+def upload_visitor_data():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+    #status =re["status"]["message"]
+    #assert status == "created new visitor doc","Expected Result '{}'  but Acutual Result is '{}' !!. ".format("created new visitor doc",status)
+    #print("document_created :",status)
+    #visitor_id =(re['body'])
+    #assert visitor_id !=int,"visitor should not be zero or blank"
+    #print("Visitor_Id:",visitor_id)
+    # Mongo Db Query for
+    # db.bodysegmentations.find({"visitor": ObjectId("5d10b5b601b00626caa54840")})
+    # db.badgeidentifications.find({"visitor" : ObjectId("5d7215250569d7424be32944")})
+    # db.demographies.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.dwelltimes.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.customerrecognitions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.fashions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.inferences.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+
+
+#print("Upload Vissitor Data",upload_visitor_data())
+'''
+def post_method():
+    try:
+        res=requests.post(BASE_URL, data=device_platform_verifcation_body,  auth=auth)
+        response_code = res.status_code
+        response_data = res.content
+        response_header = res.headers
+        response_text = res.text
+        response_url= res.url
+        response = json.dumps(res.json(), indent=4)
+        assert response_code == 200, "Actual Status Code is '{}'  but expected is '{}' !!!!!!!!!!!!!!!!!!!!!!!!. ".format(response_code,400)
+        return response
+        # return [response_code,response_url,response_data,response_text,response_header]
+        except Exception as error:
+        print(error)
+'''
+
+#print(post_method())
+
+def upload_visitor_data_invalid_till_id():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_till_id=12345678
+    json_string = {"tillId":invalid_till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+
+
+print(upload_visitor_data_invalid_till_id())
+
+def upload_visitor_data_invalid_event_time():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_event_time=12345678
+    json_string = {"tillId":till_id,"eventTime":invalid_event_time, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+def upload_visitor_data_invalid_track_id():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_track_id=12345678
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":invalid_track_id,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+
+def upload_visitor_data_invalid_org_id():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_org_id=12345678
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":invalid_org_id,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+def upload_visitor_data_invalid_device_id():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_device_id=12345678
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":invalid_device_id,"startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+def upload_visitor_data_invalid_image_list():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_img_lst=12345678
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,"startTime": va,"eventType": eventType,"imageList":invalid_img_lst} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+def upload_visitor_data_invalid_start_time():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    invalid_start_time=12345678
+    json_string = {"tillId":till_id,"eventTime":with_out_mili, "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":deviceId,invalid_start_time: va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(type(json_string))
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    ress = re[body]
+    print(ress)
+
+def add_device():
+    try:
+        Url = url + end_point_add_device
+        c= {"tillname":"ce"}
+        res=requests.post(Url, body='/'+str(add_device_id1)+'/'+add_device_id2,json=c,auth=auth_id)
+        response_code = res.status_code
+        print(json.dumps(res.json(), indent=4))
+        assert response_code == 200, "Actual Status Code is '{}'  but expected is '{}' !!!!!!!!!!!!!!!!!!!!!!!!. ".format(response_code,400)
+        return response_code
+        # return [response_code,response_url,response_data,response_text,response_header]
+    except Exception as error:
+        print(error)
+
+#print("Add Device:",add_device())
+
+def detach_device_using_deviceId():
+    try:
+        Url =url+end_point_detach
+        res =requests.delete(Url,auth=auth_id)
+        response_code = res.status_code
+        print(response_code,json.dumps(res.json(), indent=4))
+
+    except Exception as error:
+        print(error)
+
+#print("Detach device using device Id",detach_device_using_deviceId())
+
+def detach_by_tillid_devcie_type():
+    try:
+        Url = url+detach_by_tillid_endpoint
+
+        res =requests.delete(url=Url,data=data_detach_by_tillid,auth=auth_id)
+        response_code = res.status_code
+        print(response_code,json.dumps(res.json(), indent=4))
+        print(res.url)
+
+    except Exception as error:
+        print(error)
+
+#print("Detach by Till Id",detach_by_tillid_devcie_type())
+
+def create_aws_certificate():
+
+    try:           #'https://nightly.capillary.in/instoreai/storesense/storesense-hub/device/iot/50015469/certificate?deviceType=CE'
+        urlss = url + str(aws_endpoint)
+        res = requests.get(urlss,data=None,json=None,auth=auth_id)
+        response_code = res.status_code
+        print(json.dumps(res.json(), indent=4))
+        #print()
+        assert response_code == 200, "Actual Status Code is '{}'  but expected is '{}' !!!!!!!!!!!!!!!!!!!!!!!!. ".format(
+            response_code, 400)
+        # return response
+        # return [response_code,response_url,response_data,response_text,response_header]
+    except Exception as error:
+        print(error)
+
+#print("Create AWS_Certificate",create_aws_certificate())
+
+def set_config():
+    urlss = url + endpoint_set_config
+
+    #r = requests.get("https://nightly.capillary.in/instoreai/storesense/storesense-hub/mqtt/50015469/config",json=set_config_par,auth=auth_id)
+    res =requests.get(urlss+scid1+'/'+scid2+'?'+se_cfig_parm+'&'+stro+'&'+org+'&'+ device_type,auth=auth_id)
+    re = res.text
+    a =(json.dumps(res.json(), indent=4))
+    print(json.dumps(res.json(), indent=4))
+    print(a['body']['jobId'])
+    return(re)
+
+#print("set_config:",set_config())
+
+def con():
+    urlss = url
+    res = requests.get(urlss, json=set_config_par, auth=auth_id)
+    # re = requests.get()
+    response_code = res.status_code
+    print(json.dumps(res.json(), indent=4))
+    return (response_code)
+
+#con()
+def send_email():
+
+
+    fromaddr = "amitsaxena9225@gmail.com"
+    toaddr = 'amit.saxena@capillarytech.com'
+    # instance of MIMEMultipart
+    msg = MIMEMultipart()
+    # storing the senders email address
+    msg['From'] = fromaddr
+    # storing the receivers email address
+    msg['To'] = toaddr
+    # storing the subject
+    msg['Subject'] = "SSHUB Automation Sanity Passed !!!!"
+    # string to store the body of the mail
+    body = '''# Create the plain-text and HTML version of your message
+text = """\
+Hi,
+How are you?
+Real Python has many great tutorials:
+www.realpython.com"""
+html = """\
+<html>
+  <body>
+    <p>Hi,<br>
+       How are you?<br>
+       <a href="http://www.realpython.com">Real Python</a>
+       has many great tutorials.
+    </p>
+  </body>
+</html>
+"""'''
+
+    # attach the body with the msg instance
+    msg.attach(MIMEText(body, 'html'))
+    # open the file to be sent
+    filename = "/home/amit.saxena@capdomain.com/Final/Tests/log.html"
+    attachment = open(filename, "rb")
+    # instance of MIMEBase and named as p
+    p = MIMEBase('application', 'octet-stream')
+    # open the file to be sent
+    filename1 = "/home/amit.saxena@capdomain.com/Final/Tests/report.html"
+    attachment1 = open(filename1, "rb")
+    # instance of MIMEBase and named as p
+    p = MIMEBase('application', 'octet-stream')
+    p1 = MIMEBase('application', 'octet-stream')
+    # To change the payload into encoded form
+    p.set_payload((attachment).read())
+    p1.set_payload((attachment1).read())
+    # encode into base64
+    encoders.encode_base64(p)
+    encoders.encode_base64(p1)
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    p1.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    # attach the instance 'p' to instance 'msg'
+    msg.attach(p)
+    msg.attach(p1)
+    # creates SMTP session
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    # start TLS for security
+    s.starttls()
+    # Authentication
+    s.login(fromaddr, "capillary@123")
+    # Converts the Multipart msg into a string
+    text = msg.as_string()
+    text1 = msg.as_string()
+    # sending the mail
+    s.sendmail(fromaddr, toaddr, text,text1)
+    # terminating the session
+    s.quit()
+
+
+print(send_email())
+
+def upload_visitor_data_event_time_is_null():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    #print(trackId)
+    json_string = {"tillId":till_id,"eventTime":"", "trackId":trackId,"storeId":storeId,"orgId":orgId," deviceId":"","startime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(json_string)
+
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    print(req.url)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    status =re["status"]["message"]
+    assert status == "created new visitor doc","Expected Result '{}'  but Acutual Result is '{}' !!. ".format("created new visitor doc",status)
+    print("document_created :",status)
+    visitor_id =(re['body'])
+    assert visitor_id !=int,"visitor should not be zero or blank"
+    print("Visitor_Id:",visitor_id)
+    # Mongo Db Query for
+    # db.bodysegmentations.find({"visitor": ObjectId("5d10b5b601b00626caa54840")})
+    # db.badgeidentifications.find({"visitor" : ObjectId("5d7215250569d7424be32944")})
+    # db.demographies.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.dwelltimes.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.customerrecognitions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.fashions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.inferences.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+
+
+#print("Upload Vissitor Data",upload_visitor_data_event_time_is_null())
+
+def upload_visitor_data_till_id_is_null():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    json_string = {"tillId":"","eventTime":"", "trackId":trackId,"storeId":storeId,"orgId":orgId,"deviceId":"","startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(json_string)
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    print(req.url)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    #status =re["status"]["message"]
+    #assert status == "created new visitor doc","Expected Result '{}'  but Acutual Result is '{}' !!. ".format("created new visitor doc",status)
+    #print("document_created :",status)
+    #visitor_id =(re['body'])
+    #assert visitor_id !=int,"visitor should not be zero or blank"
+    #print("Visitor_Id:",visitor_id)
+    # Mongo Db Query for
+    # db.bodysegmentations.find({"visitor": ObjectId("5d10b5b601b00626caa54840")})
+    # db.badgeidentifications.find({"visitor" : ObjectId("5d7215250569d7424be32944")})
+    # db.demographies.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.dwelltimes.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.customerrecognitions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.fashions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.inferences.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+
+
+#print("Upload Vissitor Data",upload_visitor_data_till_id_is_null)
+
+def upload_visitor_data_storeId_is_null():
+    ur = str(url)+str( end_point_vud)
+    trackId = str(with_out_mili)+'-'+str(va)
+    print(trackId)
+    json_string = {"tillId":"","eventTime":"", "trackId":trackId,"storeId":'',"orgId":orgId,"deviceId":"","startTime": va,"eventType": eventType,"imageList":temp} # ['5df2196440f1dd488ebf9707','5df21f4e40f1dd488ebf993b','5df21fed40f1dd488ebf9984','5df2203140f1dd488ebf99a5','5df22069ce2d4648bbf8129d']
+    print(json_string)
+    req = requests.post(ur,data=(json_string),auth=auth_id)
+    print(req.url)
+    response = json.dumps(req.json(), indent=4)
+    print(response)
+    re = req.json()
+    #status =re["status"]["message"]
+    #assert status == "created new visitor doc","Expected Result '{}'  but Acutual Result is '{}' !!. ".format("created new visitor doc",status)
+    #print("document_created :",status)
+    #visitor_id =(re['body'])
+    #assert visitor_id !=int,"visitor should not be zero or blank"
+    #print("Visitor_Id:",visitor_id)
+    # Mongo Db Query for
+    # db.bodysegmentations.find({"visitor": ObjectId("5d10b5b601b00626caa54840")})
+    # db.badgeidentifications.find({"visitor" : ObjectId("5d7215250569d7424be32944")})
+    # db.demographies.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.dwelltimes.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.customerrecognitions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.fashions.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+    # db.inferences.find({"visitor" : ObjectId("5d10b5b601b00626caa54840")})
+
+
+#print("Upload Visitor Data",upload_visitor_data_storeId_is_null)
+
+
+'''
+
+
+
+Visitor_Invalid_Til_Id
+    [Tags]  Negative  visitor
+    [Documentation]   TillID is Invalid for Scenarios
+
+    visitor_invalid_till_id
+
+Visitor_Invalid_Event_Time
+    [Tags]  Negative  visitor
+    [Documentation]   EventTime is Invalid for Scenarios
+
+    visitor_invalid_event_time
+
+Visitor_Invalid_Track_Id
+    [Tags]  Negative  visitor
+    [Documentation]   TrackID is Invalid for Scenarios
+
+    visitor_invalid_track_id
+
+Visitor_Invalid_Org_Id
+    [Tags]  Negative  visitor
+    [Documentation]   OrgID is Invalid for Scenarios
+    visitor_invalid_org_id
+
+visitor_invalid_device_id
+    [Tags]  Negative  visitor
+    [Documentation]   DeviceID is Invalid for Scenarios
+    visitor_invalid_device_id
+
+
+visitor_invalid_image_list
+    [Tags]  Negative  visitor
+    [Documentation]   ImageList is Invalid for Scenarios
+    visitor_invalid_image_list
+
+Visitor_Invalid_Start_Time
+    [Tags]  Negative  visitor
+
+
+
+#Image_invalid_checksum
+
+#    [Tags]  Negative  image
+
+#    #checksum_Invalid
+
+    [Documentation]   StartTime is Invalid for Scenarios
+    visitor_invalid_start_time
+
+tillid_null
+
+    ${nulltillid}=   upload_visitor_data_till_id_is_null
+
+visitor_invalid_till_id
+    ${ivalid_tillid}=   upload_visitor_data_invalid_till_id
+
+visitor_invalid_event_time
+    ${invalid_tillid}=  upload_visitor_data_invalid_event_time
+visitor_invalid_track_id
+    ${invalid_track_id}=  upload_visitor_data_invalid_track_id
+visitor_invalid_org_id
+     ${invalid_org_id}=  upload_visitor_data_invalid_org_id
+visitor_invalid_device_id
+    ${invalid_device_id}=  upload_visitor_data_invalid_device_id
+visitor_invalid_image_list
+    ${invalid_image_list}=  upload_visitor_data_invalid_image_list
+visitor_invalid_start_time
+    ${invalid_start_time}=   upload_visitor_data_invalid_start_time
+
+stoid_null
+    ${st_id_null}=  upload_visitor_data_storeId_is_null
+
+
+set_con
+     ${set_congof_tr}=   set config
+     log to console      ${set_congof_tr}
+
+
+
+#checksum_Invalid
+
+#    ${invad_checksum}=   image_upload_data_checksum_invalid
+
+fra_time_invalid
+
+    ${invad_frame_time}=   image_upload_data_frameTime_invalid
+
+

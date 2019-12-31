@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generator="Robot 3.1.2 (Python 3.5.2 on linux)" generated="20191231 16:47:37.873">
+<suite id="s1" source="/home/amit.saxena@capdomain.com/StoreSenseAutomation/Tests/test1.robot" name="Test1">
+<test id="s1-t1" name="device platform verifcation">
+<kw name="device platform verifcation">
+<msg timestamp="20191231 16:47:38.048" level="FAIL">No keyword with name 'device platform verifcation' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.048" starttime="20191231 16:47:38.048"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.048" critical="yes" starttime="20191231 16:47:38.045">No keyword with name 'device platform verifcation' found.</status>
+</test>
+<test id="s1-t2" name="Add Device">
+<kw name="add device">
+<msg timestamp="20191231 16:47:38.051" level="FAIL">No keyword with name 'add device' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.051" starttime="20191231 16:47:38.051"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.051" critical="yes" starttime="20191231 16:47:38.048">No keyword with name 'add device' found.</status>
+</test>
+<test id="s1-t3" name="Detach Device Using DeviceId">
+<kw name="detach device using deviceId">
+<msg timestamp="20191231 16:47:38.055" level="FAIL">No keyword with name 'detach device using deviceId' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.055" starttime="20191231 16:47:38.055"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.055" critical="yes" starttime="20191231 16:47:38.052">No keyword with name 'detach device using deviceId' found.</status>
+</test>
+<test id="s1-t4" name="Detach Device By TillId and DeviceType">
+<kw name="detach device by tillId and deviceType">
+<msg timestamp="20191231 16:47:38.058" level="FAIL">No keyword with name 'detach device by tillId and deviceType' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.058" starttime="20191231 16:47:38.058"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.058" critical="yes" starttime="20191231 16:47:38.055">No keyword with name 'detach device by tillId and deviceType' found.</status>
+</test>
+<test id="s1-t5" name="Upload Image">
+<kw name="IMAGES">
+<msg timestamp="20191231 16:47:38.062" level="FAIL">No keyword with name 'IMAGES' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.062" starttime="20191231 16:47:38.062"></status>
+</kw>
+<tags>
+<tag>Imageeee</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.063" critical="yes" starttime="20191231 16:47:38.059">No keyword with name 'IMAGES' found.</status>
+</test>
+<test id="s1-t6" name="visitor data">
+<kw name="upload_visitor">
+<msg timestamp="20191231 16:47:38.066" level="FAIL">No keyword with name 'upload_visitor' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.066" starttime="20191231 16:47:38.066"></status>
+</kw>
+<tags>
+<tag>Image</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.066" critical="yes" starttime="20191231 16:47:38.063">No keyword with name 'upload_visitor' found.</status>
+</test>
+<test id="s1-t7" name="create aws">
+<kw name="create aws cert">
+<msg timestamp="20191231 16:47:38.069" level="FAIL">No keyword with name 'create aws cert' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.070" starttime="20191231 16:47:38.069"></status>
+</kw>
+<tags>
+<tag>Certificate</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.070" critical="yes" starttime="20191231 16:47:38.067">No keyword with name 'create aws cert' found.</status>
+</test>
+<test id="s1-t8" name="set_config_triger">
+<kw name="set_con">
+<msg timestamp="20191231 16:47:38.073" level="FAIL">No keyword with name 'set_con' found. Did you mean:
+    BuiltIn.Get Count</msg>
+<status status="FAIL" endtime="20191231 16:47:38.073" starttime="20191231 16:47:38.073"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.073" critical="yes" starttime="20191231 16:47:38.070">No keyword with name 'set_con' found. Did you mean:
+    BuiltIn.Get Count</status>
+</test>
+<test id="s1-t9" name="Image_invalid_scre">
+<kw name="Image_INVALID_SCORE">
+<msg timestamp="20191231 16:47:38.080" level="FAIL">No keyword with name 'Image_INVALID_SCORE' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.080" starttime="20191231 16:47:38.080"></status>
+</kw>
+<tags>
+<tag>image</tag>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.080" critical="yes" starttime="20191231 16:47:38.074">No keyword with name 'Image_INVALID_SCORE' found.</status>
+</test>
+<test id="s1-t10" name="negative_null">
+<kw name="eventime_null">
+<msg timestamp="20191231 16:47:38.086" level="FAIL">No keyword with name 'eventime_null' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.086" starttime="20191231 16:47:38.086"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.086" critical="yes" starttime="20191231 16:47:38.081">No keyword with name 'eventime_null' found.</status>
+</test>
+<test id="s1-t11" name="image_empty_Scr">
+<kw name="image_empty_score">
+<msg timestamp="20191231 16:47:38.090" level="FAIL">No keyword with name 'image_empty_score' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.090" starttime="20191231 16:47:38.090"></status>
+</kw>
+<doc>FrameTime is Empty for Scenarios</doc>
+<tags>
+<tag>image</tag>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.090" critical="yes" starttime="20191231 16:47:38.087">No keyword with name 'image_empty_score' found.</status>
+</test>
+<test id="s1-t12" name="Image_frame_time_invalid">
+<kw name="Image_fra_time_invalid">
+<msg timestamp="20191231 16:47:38.094" level="FAIL">No keyword with name 'Image_fra_time_invalid' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.094" starttime="20191231 16:47:38.094"></status>
+</kw>
+<doc>FrameTime is invalid for Scenarios</doc>
+<tags>
+<tag>image</tag>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.095" critical="yes" starttime="20191231 16:47:38.091">No keyword with name 'Image_fra_time_invalid' found.</status>
+</test>
+<test id="s1-t13" name="Image_checksum_is_null">
+<kw name="Image_checksum_null">
+<msg timestamp="20191231 16:47:38.101" level="FAIL">No keyword with name 'Image_checksum_null' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.101" starttime="20191231 16:47:38.101"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.102" critical="yes" starttime="20191231 16:47:38.095">No keyword with name 'Image_checksum_null' found.</status>
+</test>
+<test id="s1-t14" name="Image_checksum_invalid">
+<kw name="checksum_Invalid">
+<msg timestamp="20191231 16:47:38.106" level="FAIL">No keyword with name 'checksum_Invalid' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.106" starttime="20191231 16:47:38.105"></status>
+</kw>
+<tags>
+<tag>image</tag>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.106" critical="yes" starttime="20191231 16:47:38.102">No keyword with name 'checksum_Invalid' found.</status>
+</test>
+<test id="s1-t15" name="Visitor_Invalid_Till_Id">
+<kw name="visitor_invalid_till_id">
+<msg timestamp="20191231 16:47:38.109" level="FAIL">No keyword with name 'visitor_invalid_till_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.110" starttime="20191231 16:47:38.109"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+<tag>visitor</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.110" critical="yes" starttime="20191231 16:47:38.106">No keyword with name 'visitor_invalid_till_id' found.</status>
+</test>
+<test id="s1-t16" name="Visitor_Invalid_Event_Time">
+<kw name="visitor_invalid_event_time">
+<msg timestamp="20191231 16:47:38.113" level="FAIL">No keyword with name 'visitor_invalid_event_time' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.114" starttime="20191231 16:47:38.113"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+<tag>visitor</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.114" critical="yes" starttime="20191231 16:47:38.110">No keyword with name 'visitor_invalid_event_time' found.</status>
+</test>
+<test id="s1-t17" name="Visitor_Invalid_Track_Id">
+<kw name="visitor_invalid_track_id">
+<msg timestamp="20191231 16:47:38.120" level="FAIL">No keyword with name 'visitor_invalid_track_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.120" starttime="20191231 16:47:38.120"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+<tag>visitor</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.121" critical="yes" starttime="20191231 16:47:38.115">No keyword with name 'visitor_invalid_track_id' found.</status>
+</test>
+<test id="s1-t18" name="Visitor_Invalid_Org_Id">
+<kw name="visitor_invalid_org_id">
+<msg timestamp="20191231 16:47:38.127" level="FAIL">No keyword with name 'visitor_invalid_org_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.127" starttime="20191231 16:47:38.127"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.127" critical="yes" starttime="20191231 16:47:38.121">No keyword with name 'visitor_invalid_org_id' found.</status>
+</test>
+<test id="s1-t19" name="Visitor_Invalid_Device_Id">
+<kw name="visitor_invalid_device_id">
+<msg timestamp="20191231 16:47:38.131" level="FAIL">No keyword with name 'visitor_invalid_device_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.131" starttime="20191231 16:47:38.131"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.131" critical="yes" starttime="20191231 16:47:38.128">No keyword with name 'visitor_invalid_device_id' found.</status>
+</test>
+<test id="s1-t20" name="Visitor_Invalid_Image_List">
+<kw name="visitor_invalid_image_list">
+<msg timestamp="20191231 16:47:38.136" level="FAIL">No keyword with name 'visitor_invalid_image_list' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.136" starttime="20191231 16:47:38.136"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.136" critical="yes" starttime="20191231 16:47:38.132">No keyword with name 'visitor_invalid_image_list' found.</status>
+</test>
+<test id="s1-t21" name="Visitor_Invalid_Start_Time">
+<kw name="visitor_invalid_start_time">
+<msg timestamp="20191231 16:47:38.142" level="FAIL">No keyword with name 'visitor_invalid_start_time' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.142" starttime="20191231 16:47:38.142"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.143" critical="yes" starttime="20191231 16:47:38.137">No keyword with name 'visitor_invalid_start_time' found.</status>
+</test>
+<test id="s1-t22" name="Visitor_null_store_id">
+<kw name="Visitor_null_sto_id">
+<msg timestamp="20191231 16:47:38.147" level="FAIL">No keyword with name 'Visitor_null_sto_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.147" starttime="20191231 16:47:38.147"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.147" critical="yes" starttime="20191231 16:47:38.143">No keyword with name 'Visitor_null_sto_id' found.</status>
+</test>
+<test id="s1-t23" name="Visitor_till_ID_Null">
+<kw name="visitor_till_id_null">
+<msg timestamp="20191231 16:47:38.151" level="FAIL">No keyword with name 'visitor_till_id_null' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.151" starttime="20191231 16:47:38.151"></status>
+</kw>
+<status status="FAIL" endtime="20191231 16:47:38.151" critical="yes" starttime="20191231 16:47:38.148">No keyword with name 'visitor_till_id_null' found.</status>
+</test>
+<test id="s1-t24" name="Visitor_store_id_null">
+<kw name="Visitor_null_sto_id">
+<msg timestamp="20191231 16:47:38.156" level="FAIL">No keyword with name 'Visitor_null_sto_id' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.156" starttime="20191231 16:47:38.156"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.156" critical="yes" starttime="20191231 16:47:38.151">No keyword with name 'Visitor_null_sto_id' found.</status>
+</test>
+<test id="s1-t25" name="frameTime_null">
+<kw name="fra_time_null">
+<msg timestamp="20191231 16:47:38.162" level="FAIL">No keyword with name 'fra_time_null' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.162" starttime="20191231 16:47:38.162"></status>
+</kw>
+<tags>
+<tag>Negative</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.163" critical="yes" starttime="20191231 16:47:38.157">No keyword with name 'fra_time_null' found.</status>
+</test>
+<test id="s1-t26" name="mongodb">
+<kw name="mondb">
+<msg timestamp="20191231 16:47:38.166" level="FAIL">No keyword with name 'mondb' found.</msg>
+<status status="FAIL" endtime="20191231 16:47:38.166" starttime="20191231 16:47:38.166"></status>
+</kw>
+<tags>
+<tag>mon</tag>
+</tags>
+<status status="FAIL" endtime="20191231 16:47:38.166" critical="yes" starttime="20191231 16:47:38.163">No keyword with name 'mondb' found.</status>
+</test>
+<status status="FAIL" endtime="20191231 16:47:38.167" starttime="20191231 16:47:37.874"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="26" pass="0">Critical Tests</stat>
+<stat fail="26" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">Certificate</stat>
+<stat fail="3" pass="0">Device</stat>
+<stat fail="5" pass="0">Image</stat>
+<stat fail="1" pass="0">Imageeee</stat>
+<stat fail="1" pass="0">mon</stat>
+<stat fail="11" pass="0">Negative</stat>
+<stat fail="3" pass="0">visitor</stat>
+</tag>
+<suite>
+<stat fail="26" id="s1" pass="0" name="Test1">Test1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20191231 16:47:38.044" level="ERROR">Error in file '/home/amit.saxena@capdomain.com/StoreSenseAutomation/Tests/test1.robot': Resource file 'Resources/keywrd.robot' does not exist.</msg>
+</errors>
+</robot>
