@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20191227 00:36:45.902" generator="Robot 3.1.2 (Python 3.5.2 on linux)" rpa="false">
+<suite id="s1" name="Test1" source="/home/amit.saxena@capdomain.com/Final/Tests/test1.robot">
+<test id="s1-t1" name="device platform verifcation">
+<kw library="keywrd" name="device platform verifcation">
+<kw library="RequestsLibrary" name="Create Session">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>device platform verifcation</arg>
+<arg>${BASE_URL}</arg>
+<arg>auth=@{test_auth}</arg>
+</arguments>
+<msg timestamp="20191227 00:36:46.305" level="INFO">Creating Session using : alias=device platform verifcation, url=https://nightly.capillary.in, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x7f402affb390&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status endtime="20191227 00:36:46.306" status="PASS" starttime="20191227 00:36:46.305"></status>
+</kw>
+<kw library="RequestsLibrary" name="Post Request">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>device platform verifcation</arg>
+<arg>${dev_pla_veri_endpoint_url}</arg>
+<arg>data=&amp;{body}</arg>
+<arg>headers=&amp;{header}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191227 00:36:46.307" level="INFO">POST Request using : uri=/instoreai/storesense/storesense-hub/device/platform/202481595999429/datasource/?deviceType=ce, params=None, allow_redirects=True, timeout=None, files=None
+headers={'Accept': '*/*', 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate'} 
+data={"tillName": " cvp.instoreai1"} 
+json=None</msg>
+<msg timestamp="20191227 18:21:23.974" level="INFO">/home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/urllib3/connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<status endtime="20191227 18:21:23.974" status="FAIL" starttime="20191227 00:36:46.306"></status>
+</kw>
+<status endtime="20191227 18:21:23.974" status="FAIL" starttime="20191227 00:36:46.305"></status>
+</kw>
+<status endtime="20191227 18:21:23.974" status="FAIL" starttime="20191227 00:36:46.304" critical="yes">Execution terminated by signal</status>
+</test>
+<test id="s1-t2" name="Add Device">
+<tags>
+<tag>Device</tag>
+<tag>robot:exit</tag>
+</tags>
+<status endtime="20191227 18:21:23.975" status="FAIL" starttime="20191227 18:21:23.975" critical="yes">Test execution stopped due to a fatal error.</status>
+</test>
+<test id="s1-t3" name="Detach Device Using DeviceId">
+<errors>
+<msg timestamp="20191227 00:36:46.298" level="ERROR">Error in file '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/keywrd.robot': Importing test library '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py' failed: JSONDecodeError: Expecting ',' delimiter: line 8 column 3 (char 279)
+Traceback (most recent call last):
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py", line 13, in &lt;module&gt;
+    from  Resources.datafile import *
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/datafile.py", line 7, in &lt;module&gt;
+    distros_dict = json.load(filename)
+  File "/usr/lib/python3.5/json/__init__.py", line 268, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+PYTHONPATH:
+  /home/amit.saxena@capdomain.com/Final/venv/bin
+  /usr/lib/python35.zip
+  /usr/lib/python3.5
+  /usr/lib/python3.5/plat-x86_64-linux-gnu
+  /usr/lib/python3.5/lib-dynload
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/setuptools-40.8.0-py3.5.egg
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/pip-19.0.3-py3.5.egg</msg>
+</errors>
+</robot>
+rguments>
+<status status="PASS" endtime="20191227 00:48:01.010" starttime="20191227 00:48:01.009"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${Scalar_variable}</arg>
+</arguments>
+<status status="PASS" endtime="20191227 00:48:01.012" starttime="20191227 00:48:01.011"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" endtime="20191227 00:48:01.014" starttime="20191227 00:48:01.012"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20191227 00:48:01.015" starttime="20191227 00:48:01.014"></status>
+</kw>
+<status status="PASS" endtime="20191227 00:48:01.015" starttime="20191227 00:47:59.800"></status>
+</kw>
+<status status="PASS" endtime="20191227 00:48:01.016" critical="yes" starttime="20191227 00:47:59.800"></status>
+</test>
+<test id="s1-t2" name="Add Device">
+<kw name="add device" library="keywrd">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>device</arg>
+<arg>${BASE_URL}</arg>
+<arg>auth=@{test_auth}</arg>
+</arguments>
+<msg timestamp="20191227 00:48:01.018" level="INFO">Creating Session using : alias=device, url=https://nightly.capillary.in, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x7fa67c402978&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20191227 00:48:01.019" starttime="20191227 00:48:01.018"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>device</arg>
+<arg>${add_device_endpoint_url}</arg>
+<arg>data=&amp;{body}</arg>
+<arg>headers=&amp;{header}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191227 00:48:01.021" level="INFO">POST Request using : uri=/instoreai/storesense/storesense-hub/device/platform/201907171834016/datasource?deviceType=CE, files=None, timeout=None, params=None, allow_redirects=True
+headers={'Accept': '*/*', 'User-Agent': 'python-requests/2.22.0', 'Content-Type': 'application/json', 'Accept-Encoding': 'gzip, deflate', 'Connection': 'keep-alive'} 
+data={"tillName": " cvp.instoreai1"} 
+json=None</msg>
+<status status="FAIL" endtime="20191227 18:21:23.974" starttime="20191227 00:48:01.019"></status>
+</kw>
+<status status="FAIL" endtime="20191227 18:21:23.974" starttime="20191227 00:48:01.017"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status status="FAIL" endtime="20191227 18:21:23.974" critical="yes" starttime="20191227 00:48:01.016">Execution terminated by signal</status>
+</test>
+<test id="s1-t3" name="Detach Device Using DeviceId">
+<tags>
+<tag>Device</tag>
+<tag>robot:exit</tag>
+</tags>
+<status status="FAIL" endtime="20191227 18:21:23.975" critical="yes" starttime="20191227 18:21:23.975">Test execution stopped due to a fatal error.</status>
+</test>
+<test id="s1-t4" name="Detach Device By TillId and DeviceType">
+<tags>
+<tag>Device</tag>
+<tag>robot:exit</tag>
+</tags>
+<status status="FAIL" endtime="20191227 18:21:23.982" critical="yes" starttime="20191227 18:21:23.976">Test execution stopped due to a fatal error.</status>
+</test>
+<test id="s1-t5" name="Upload Image">
+<errors>
+<msg timestamp="20191227 00:47:59.793" level="ERROR">Error in file '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/keywrd.robot': Importing test library '/home/amit.saxena@capdomain.</status>
+</test>
+<errors>
+<msg timestamp="20191227 00:38:00.929" level="ERROR">Error in file '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/keywrd.robot': Importing test library '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py' failed: JSONDecodeError: Expecting ',' delimiter: line 8 column 3 (char 279)
+Traceback (most recent call last):
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py", line 14, in &lt;module&gt;
+    from  Resources.datafile import *
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/datafile.py", line 7, in &lt;module&gt;
+    distros_dict = json.load(filename)
+  File "/usr/lib/python3.5/json/__init__.py", line 268, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+PYTHONPATH:
+  /home/amit.saxena@capdomain.com/Final/venv/bin
+  /usr/lib/python35.zip
+  /usr/lib/python3.5
+  /usr/lib/python3.5/plat-x86_64-linux-gnu
+  /usr/lib/python3.5/lib-dynload
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/setuptools-40.8.0-py3.5.egg
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/pip-19.0.3-py3.5.egg</msg>
+</errors>
+</robot>
+it__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+PYTHONPATH:
+  /home/amit.saxena@capdomain.com/Final/venv/bin
+  /usr/lib/python35.zip
+  /usr/lib/python3.5
+  /usr/lib/python3.5/plat-x86_64-linux-gnu
+  /usr/lib/python3.5/lib-dynload
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/setuptools-40.8.0-py3.5.egg
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/pip-19.0.3-py3.5.egg</msg>
+</errors>
+</robot>
+request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>device</arg>
+<arg>${detach_device_using_deviceId_endpoint_url}</arg>
+<arg>headers=&amp;{header}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg level="INFO" timestamp="20191227 00:35:34.500">DELETE Request using : uri=/instoreai/storesense/storesense-hub/device/platform/201907171834018/datasource, allow_redirects=True, params=None, timeout=None
+headers={'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json=None</msg>
+<status status="FAIL" starttime="20191227 00:35:34.499" endtime="20191227 18:21:23.971"></status>
+</kw>
+<status status="FAIL" starttime="20191227 00:35:34.497" endtime="20191227 18:21:23.972"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status status="FAIL" starttime="20191227 00:35:34.496" critical="yes" endtime="20191227 18:21:23.972">Execution terminated by signal</status>
+</test>
+<test name="Detach Device By TillId and DeviceType" id="s1-t4">
+<tags>
+<tag>Device</tag>
+<tag>robot:exit</tag>
+</tags>
+<status status="FAIL" starttime="20191227 18:21:23.973" critical="yes" endtime="20191227 18:21:23.973">Test execution stopped due to a fatal error.</status>
+</test>
+<test name="Upload Image" id="s1-t5">
+<tags>
+<tag>Image</tag>
+<tag>robot:exit</tag>
+</tags>
+<status status="FAIL" starttime="20191227 18:21:23.978" critical="yes" endtime="20191227 18:21:23.981">Test execution stopped due to a fatal error.</status>
+</test>
+<errors>
+<msg level="ERROR" timestamp="20191227 00:35:31.793">Error in file '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/keywrd.robot': Importing test library '/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py' failed: JSONDecodeError: Expecting ',' delimiter: line 8 column 3 (char 279)
+Traceback (most recent call last):
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/functions.py", line 13, in &lt;module&gt;
+    from  Resources.datafile import *
+  File "/home/amit.saxena@capdomain.com/Final/venv/bin/Resources/datafile.py", line 7, in &lt;module&gt;
+    distros_dict = json.load(filename)
+  File "/usr/lib/python3.5/json/__init__.py", line 268, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+PYTHONPATH:
+  /home/amit.saxena@capdomain.com/Final/venv/bin
+  /usr/lib/python35.zip
+  /usr/lib/python3.5
+  /usr/lib/python3.5/plat-x86_64-linux-gnu
+  /usr/lib/python3.5/lib-dynload
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/setuptools-40.8.0-py3.5.egg
+  /home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/pip-19.0.3-py3.5.egg</msg>
+</errors>
+</robot>
+0191227 10:41:47.071" status="PASS"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status starttime="20191227 10:41:45.615" endtime="20191227 10:41:47.072" critical="yes" status="PASS"></status>
+</test>
+<test name="Detach Device By TillId and DeviceType" id="s1-t4">
+<kw name="detach device by tillId and deviceType" library="keywrd">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>device</arg>
+<arg>${BASE_URL}</arg>
+<arg>auth=@{test_auth}</arg>
+</arguments>
+<msg timestamp="20191227 10:41:47.073" level="INFO">Creating Session using : alias=device, url=https://nightly.capillary.in, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x7fc7886aef60&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status starttime="20191227 10:41:47.073" endtime="20191227 10:41:47.074" status="PASS"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>device</arg>
+<arg>${discard_devcie_endpoint_url}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191227 10:41:47.075" level="INFO">DELETE Request using : uri=/instoreai/storesense/storesense-hub/device/platform/201904011256033, allow_redirects=True, params=None, timeout=None
+headers={'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'Connection': 'keep-alive', 'User-Agent': 'python-requests/2.22.0'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191227 10:41:48.779" level="INFO">/home/amit.saxena@capdomain.com/Final/venv/lib/python3.5/site-packages/urllib3/connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191227 10:41:48.780" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<status starttime="20191227 10:41:47.074" endtime="20191227 10:41:48.781" status="PASS"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${resp_body}</var>
+</assign>
+<msg timestamp="20191227 10:41:48.784" level="INFO">${resp_body} = {"status":{"isError":true,"code":500,"message":"Device is marked discarded"}}</msg>
+<status starttime="20191227 10:41:48.782" endtime="20191227 10:41:48.784" status="PASS"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${response_code}</var>
+</assign>
+<msg timestamp="20191227 09:58:38.121" level="INFO">${response_code} = 500</msg>
+<status starttime="20191227 09:58:38.121" status="PASS" endtime="20191227 09:58:38.121"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${response_code}</arg>
+<arg>500</arg>
+</arguments>
+<status starttime="20191227 09:58:38.122" status="PASS" endtime="20191227 09:58:38.122"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${Scalar_variable}</arg>
+</arguments>
+<status starttime="20191227 09:58:38.122" status="PASS" endtime="20191227 09:58:38.122"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response_code}</arg>
+</arguments>
+<status starttime="20191227 09:58:38.122" status="PASS" endtime="20191227 09:58:38.123"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status starttime="20191227 09:58:38.123" status="PASS" endtime="20191227 09:58:38.123"></status>
+</kw>
+<status starttime="20191227 09:58:36.491" status="PASS" endtime="20191227 09:58:38.123"></status>
+</kw>
+<tags>
+<tag>Device</tag>
+</tags>
+<status starttime="20191227 09:58:36.489" critical="yes" status="PASS" endtime="20191227 09:58:38.123"></status>
+</test>
+<test name="Upload Image" id="s1-t5">
+<kw library="keywrd" name="IMAGES">
+<kw library="functions" name="Image Upload Data">
+<assign>
+<var>${SEARCH}</var>
+</assign>
+<msg timestamp="20191227 09:58:49.872" level="INFO">{"status":{"isError":false,"code":200,"message":"success"},"body":{"imageId":"5e05887adcd6507e3cea8c58"}} {
+    "status": {
+        "isError": false,
+        "code": 200,
+        "message": "success"
+    },
+    "body": {
+        "imageId": "5e05887adcd6507e3cea8c58"
+    }
+}
+IMAGE UPLOAD TEST CASES IS COMPLETED
+{"status":{"isError":false,"code":200,"message":"success"},"body":{"imageId":"5e05887e4ce8c77e33a0ba3a"}} {
+    "status": {
+        "isError": false,
+        "code": 200,
+        "message": "success"
+    },
+    "body": {
+        "imageId": "5e05887e4ce8c77e33a0ba3a"
+    }
+}
+IMAGE UPLOAD TEST CASES IS COMPLETED
+{"status":{"isError":false,"code":200,"message":"success"},"body":{"imageId":"5e05887fdcd6507e3cea8c59"}} {
+    "status": {
+        "isError": false,
+        "code": 200,
+        "message": "success"
+    },
+    "body": {
+        "imageId": "5e05887fdcd6507e3cea8c59"
+    }
+}
+IMAGE UPLOAD TEST CASES IS COMPLETED
+{"status":{"isError":false,"code":200,"message":"success"},"body":{"imageId":"5e0588814ce8c77e33a0ba3b"}} {
+    "status": {
+        "isError": false,
+        "code": 200,
+        "message": "success"
+    },
+    "body": {
+        "imageId": "5e0588814ce8c77e33a0ba3b"
+    }
+}
+IMAGE UPLOAD TEST CASES IS COMPLETED
+{"status":{"isError":false,"code":200,"message":"success"},"body":{"imageId":"5e058882dcd6507e3cea8c5a"}} {
+    "status": {
+        "isError": false,
+        "code": 200,
+        "message": "success"
+    },
+    "body": {
+        "imageId": "5e058882dcd6507e3cea8c5a"
+    }
+}
+IMAGE UPLOAD TEST CASES IS COMPLETED</msg>
+<msg timestamp="20191227 09:58:49.873" level="INFO">${SEARCH} = ['5e05887adcd6507e3cea8c58', '5e05887e4ce8c77e33a0ba3a', '5e05887fdcd6507e3cea8c59', '5e0588814ce8c77e33a0ba3b', '5e058882dcd6507e3cea8c5a']</msg>
+<status starttime="20191227 09:58:38.124" status="PASS" endtime="20191227 09:58:49.873"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${SEARCH}</arg>
+</arguments>
+<status starttime="20191227 09:58:49.874" status="PASS" endtime="20191227 09:58:49.876"></status>
+</kw>
+<status starttime="20191227 09:58:38.124" status="PASS" endtime="20191227 09:58:49.876"></status>
+</kw>
+<tags>
+<tag>Image</tag>
+</tags>
+<status starttime="20191227 09:58:38.124" critical="yes" status="PASS" endtime="20191227 09:58:49.877"></status>
+</test>
+<test name="visitor data" id="s1-t6">
+<kw library="keywrd" name="upload_visitor">
+<kw library="functions" name="Upload Visitor Data">
+<assign>
+<var>${data_for_visi}</var>
+</assign>
+<msg timestamp="20191227 09:58:51.519" level="INFO">&lt;class 'dict'&gt;</msg>
+<msg timestamp="20191227 09:58:51.520" level="INFO">${data_for_visi} = {"status":{"isError":false,"code":200,"message":"created new visitor doc"},"body":{"visitor":{"_id":"5dfa2e33b5dcf70872d3c686"}}}</msg>
+<status starttime="20191227 09:58:49.882" status="PASS" endtime="20191227 09:58:51.520"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${data_for_visi}</arg>
+</arguments>
+<status starttime="20191227 09:58:51.521" status="PASS" endtime="20191227 09:58:51.522"></status>
+</kw>
+<status starttime="20191227 09:58:49.880" status="PASS" endtime="20191227 09:58:51.523"></status>
+</kw>
+<tags>
+<tag>Image</tag>
+</tags>
+<status starttime="20191227 09:58:49.878" critical="yes" status="PASS" endtime="20191227 09:58:51.524"></status>
+</test>
+<test name="get_certificate" id="s1-t7">
+<kw library="keywrd" name="create aws cert">
+<kw library="functions" name="Create Aws Certificate">
+<assign>
+<var>${cac}</var>
+</assign>
+<msg timestamp="20191227 18:21:23.981" level="INFO">Execution terminated by signal</msg>
+<msg timestamp="20191227 18:21:23.982" level="INFO">${cac} = None</msg>
+<status starttime="20191227 09:58:51.529" status="PASS" endtime="20191227 18:21:23.982"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${cac}</arg>
+</arguments>
+<status starttime="20191227 18:21:23.982" status="FAIL" endtime="20191227 18:21:23.982"></status>
+</kw>
+<status starttime="20191227 09:58:51.528" status="FAIL" endtime="20191227 18:21:23.983"></status>
+</kw>
+<tags>
+<tag>Certificate</tag>
+</tags>
+<status starttime="20191227 09:58:51.526" critical="yes" status="FAIL" endtime="20191227 18:21:23.983">Execution terminated by signal</status>
+</test>
+<test name="set_config_triger" id="s1-t8">
+<tags>
+<tag>robot:exit</tag>
+</tags>
+<status starttime="20191227 18:21:23.983" critical="yes" status="FAIL" endtime="20191227 18:21:23.988">Test execution stopped due to a fatal error.</status>
+</test>
+<errors>
+</errors>
+</robot>
+d7R+\n65IBIq/sWcy2QdaeToO6g8MwHQYDVR0OBBYEFO1iqT+GTUDLvQeu5lW34Dnx74sL\nMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IB\nAQA1OxKTyEvxDtRzH91gGux5U2PCE8O92FsuXZTdwNVziWgOT/gfa3jvma1xKvGV\nV4oqQy/HqmlHLlVgp02fHR3O+NNlxk60FzSMgeshyeeikLS0n38JEy0260NFHk/+\nBpjp6eXvcWrp+qke4VXi3r8MjiDmwxF/i+NQ0Zbe/h9jD5PWI8elMOPzlePXsM2e\ncUXFy5RojqvozaTI81BmdeMC3eYim6W4xeMxrWQkNCJ1zorGtN0q0pDQLJJrLq6G\nsxqBZUzhLTo7VYlYVIG1/H3rF8UZAPcnKOsIYPz3l4F30zQlHzE2s0Ikt5OCaxG6\n8D4HRsT9/uLNMmzsmBBGAbVP\n-----END CERTIFICATE-----\n",
+        "registrationState": "Completed",
+        "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD6oWE4oN7wkDti\nCkIoahKzKC31mAl/gxOPJVnGWT0LDvdWWyzjoPzkdIQuK+wEYhUrF9S2XThEWzke\nRP1/MyEHC5I09gyo6Z0ipvM8z1p44zKscjkFg/6IfGvy7OfgLMRfMMK5Lkl92EdX\nbMo2p52wDURLz1B8sbMr5g0nIARAdHaZAXTQXOSDizm8/Gy7PGJ86dA8LqavTyXC\ns2v/iSeD9aa1Jfh9DBEcuQMlG8NYUYYel162S0Oyy9aR99GgE7qTy7wTZk1GnmdV\n5q6r8lGRcUj90IMuwdpPeFI1AqbpabxPx6GuLdOWQrqOAf5H3DdltkP9oOnH50cS\n5PEaSLb5AgMBAAECggEAH8Gy/+niVbjwzUtfdp96HxlIOYY6Ld397HVfGrLT+UK8\nNET5Ox567LeWyALotOV4qS0r1q+ZIZAtfJhhRmzEEpB0xiEnGYAAWROuXlYnsImZ\nMiCG+RvwdHrPcshx2QXTG/yhr7UdusRcxccTGDnE0TndHX33RNV/TmCn6f00jLX0\n38iNeva4+xsK8KnFej5zV5OTib5613Vo5vM+ZLd6EOkiJVMAz636d00MnIKZOVLT\n2iPxKRy5OOsl0Wr78sKNcRAD/dacp8AlPmr4HdWJYuV9Y3m4eesLOUUts8MI/fTk\n27Rlm+qyHC1daQSUgbBtaI9Oz2y31qxQ2zrDvQtzAQKBgQD/AtrkDSi3bz2/NIcZ\nwyqZwPtznxlc/3DhANoI4jf6hDdoUmxFwqNQ/NABaSh9QZ6gQR6+tR1I6DDutUh2\ns7t57Gx0gkwfkWY0+X+oSYlAVLSPHxoV0d2JDH7zNlHOBfjNbCeRYYgfdj8v90L2\n0X6izxydCJPx7VueVT/5kmGsjQKBgQD7mi0P6gqe9xOUztlEDCwASUhI90luf4V4\nqU4fyUhVrkHZUM82WEnbF0sLTfp+8Fi4FfSTw5Z6XvDFcKMa3pRscTFAO+9vXIgy\nZ72i9/B9fl/8LuTrB/F6EaLWFlgpQjYmHYtOcKVFbHwX9OWUVyNnbMZPsKA6VrfR\n8RP7PHWXHQKBgQDA9bIX2fUzSBNa+S45SjqT+TjLtlmEyyzotLJHApYFE8KxR5zx\n9GOLxqDGUIH4tYyICn5vI7CzGC7ekYHxf/KeQU2Xo3hicqz57Mix2GLosK+nlIsy\nc4jESRZOho3D7TTki7AtC7XqyJjrfJfJF6BRJZKrKHB6IXawCiXMfP03iQKBgCzP\nUKc875dQOdSO4nMUF+IVKyKTqChd3c+Xl6phlthrqJ6jncP4BW9Xvq3MvYhOFf7z\nKhQHCY3Ryt/fJ61pZtXJcxQVmJcky7zubP/RWKuBDmdDktGpIIC1E2M9p4XxnOM8\n78qQlV6/63n4y8qXml6ZKNiYhHDfcO2bGgvswKShAoGAC95dD4qG2SziPnnQIZHf\nG+F2cCyhe321RBfEyV9HokL24S14khYToIBO5Csd8U2bD8bDDjTuv5qxXZI4qYVb\nJHNsbDfw3rRgYAaewfEDHqZuazerSeHO0rPK9pSDc5b2bHdAq+v7P1R/oeC63qP+\ndGYVGBv/dN9hjiYfSeD+op0=\n-----END PRIVATE KEY-----\n"
+    }
+}</msg>
+<msg timestamp="20191227 10:42:04.807" level="INFO">${cac} = None</msg>
+<status starttime="20191227 10:42:03.173" endtime="20191227 10:42:04.807" status="PASS"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${cac}</arg>
+</arguments>
+<status starttime="20191227 10:42:04.807" endtime="20191227 10:42:04.808" status="PASS"></status>
+</kw>
+<status starttime="20191227 10:42:03.172" endtime="20191227 10:42:04.809" status="PASS"></status>
+</kw>
+<tags>
+<tag>Certificate</tag>
+</tags>
+<status starttime="20191227 10:42:03.171" endtime="20191227 10:42:04.809" critical="yes" status="PASS"></status>
+</test>
+<test name="set_config_triger" id="s1-t8">
+<kw name="set_con" library="keywrd">
+<kw name="Set Config" library="functions">
+<assign>
+<var>${set_congof_tr}</var>
+</assign>
+<msg timestamp="20191227 10:42:06.344" level="INFO">{
+    "status": {
+        "message": "",
+        "code": 202,
+        "isError": false
+    },
+    "body": {
+        "status": "InProgress",
+        "jobId": "2ffe7e16-cda4-454b-b65c-405afa600481"
+    }
+}</msg>
+<msg timestamp="20191227 10:42:06.345" level="INFO">${set_congof_tr} = {"status":{"isError":false,"code":202,"message":""},"body":{"jobId":"2ffe7e16-cda4-454b-b65c-405afa600481","status":"InProgress"}}</msg>
+<status starttime="20191227 10:42:04.812" endtime="20191227 10:42:06.345" status="PASS"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${set_congof_tr}</arg>
+</arguments>
+<status starttime="20191227 10:42:06.345" endtime="20191227 10:42:06.346" status="PASS"></status>
+</kw>
+<status starttime="20191227 10:42:04.811" endtime="20191227 10:42:06.346" status="PASS"></status>
+</kw>
+<status starttime="20191227 10:42:04.810" endtime="20191227 10:42:06.346" critical="yes" status="PASS"></status>
+</test>
+<status starttime="20191227 10:41:40.361" endtime="20191227 10:42:06.348" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0">Critical Tests</stat>
+<stat pass="8" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">Certificate</stat>
+<stat pass="3" fail="0">Device</stat>
+<stat pass="2" fail="0">Image</stat>
+</tag>
+<suite>
+<stat name="Test1" id="s1" pass="8" fail="0">Test1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

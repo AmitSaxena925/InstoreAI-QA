@@ -1,0 +1,50 @@
+{
+  "base_url": "https://nightly.capillary.in/",
+  "tillName" : "tillName",
+  "tillName_value" : "cvp.instoreai1",
+  "auth_usename":"cvp.instoreai1",
+  "auth_password": "202cb962ac59075b964b07152d234b70",
+  "Endpoint_Image_Upload": "instoreai/storesense/storesense-hub/image/",
+  "till": "tillId",
+  "store": "storeId",
+  "org": "orgId",
+  "id1": "151108",
+  "id2": "200180212",
+  "id3": "200180213",
+  "filepath1": "/home/amit.saxena@capdomain.com/Downloads/first.jpeg",
+  "filepath2": "/home/amit.saxena@capdomain.com/Downloads/first.jpeg",
+  "filepath3": "/home/amit.saxena@capdomain.com/Downloads/third.png",
+  "filepath4": "/home/amit.saxena@capdomain.com/Downloads/fourth.jpeg",
+  "filepath5": "/home/amit.saxena@capdomain.com/Downloads/fifth.png",
+  "Endpoint_Visitor_Upload": "instoreai/storesense/storesense-hub/visitor",
+  "tillId": "50013159",
+  "deviceId" :"201907101218044",
+  "eventTime":"1563340861",
+  "storeId":"50013056",
+  "orgId":"794",
+  "eventType": "in",
+  "Endpoint_Add_device": "instoreai/storesense/storesense-hub/device/platform/",
+  "add_device_id1": 201907171834016,
+  "add_device_id2": "datasource",
+  "devicetype": "deviceType",
+  "devicetype_id" : "ce",
+  "Endpoint_detach_device": "instoreai/storesense/storesense-hub/device/platform/",
+  "deteach_device_id":201907171834018,
+  "detach_device_id2":"datasource",
+  "detach_by_tillid_devcie_type":"instoreai/storesense/storesense-hub/till/platform/",
+  "detach_by_tillid":50013158,
+  "Endpoint_aws_certificate":"instoreai/storesense/storesense-hub/device/iot/",
+  "aws_id": 50015469,
+  "aws_cer": "certificate",
+  "set_config_id" :"50015469",
+  "set_config_id1" :"config",
+  "Endpoint_set_config": "instoreai/storesense/storesense-hub/mqtt/",
+  "Endpoint_devicesnapshot":"instoreai/storesense/storesense-hub/mqtt/"
+}
+
+
+
+
+
+
+
